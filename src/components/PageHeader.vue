@@ -10,8 +10,9 @@
             
                 </span>
 
-                <span>
-                    <button @click="log_out">log out</button>
+                <span v-if="current_token !== null">
+                    <button @click="log_out">Log Out</button>
+                    <router-link to="/profile">Profile</router-link>
                 </span>
             </div>
         </header>
@@ -25,7 +26,7 @@ import Cookies from 'vue-cookies';
         
         data() {
             return {
-                
+                current_token: undefined
             }
         },
 
@@ -33,7 +34,7 @@ import Cookies from 'vue-cookies';
 
             log_out(){
 
-                let current_token = Cookies.get('login_token');
+                
 
                 axios({
                     url:'http://127.0.0.1:5000/api/login',
@@ -41,7 +42,7 @@ import Cookies from 'vue-cookies';
 
                     data:{
 
-                        token: current_token
+                        token: this.current_token
 
                     }
                 }).then(res =>{
@@ -60,7 +61,7 @@ import Cookies from 'vue-cookies';
 
         mounted(){
 
-
+            this.current_token = Cookies.get('login_token');
         }
 
     }

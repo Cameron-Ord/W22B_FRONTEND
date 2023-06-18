@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginPage from '../views/LoginPage.vue'
 import SignupPage from '../views/SignupPage.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 Vue.use(VueRouter)
 
@@ -65,6 +66,33 @@ const routes = [
     path:`/signup`,
     component: SignupPage,
     name: `signup`,
+    meta:[
+
+    {
+
+      title: `signup`,
+
+    },
+    {
+
+      name:`description`,
+
+      content: `welcome to placeholder`,
+
+    },
+    {
+
+      name: `author`,
+
+      content: `Cameron Ord`
+
+    }
+    ]
+  },
+  {
+    path:`/profile`,
+    component: ProfileView,
+    name: `profile`,
     meta:[
 
     {
