@@ -3,6 +3,8 @@
         <article class="signup_article">
             <div>
 
+                <!--user input-->
+
                 <input type="text" placeholder="email" ref="email">
 
                 <input type="text" placeholder="username" ref="user">
@@ -14,6 +16,8 @@
                 <input type="text" placeholder="profile image" ref="image_url">
 
                 <button @click="usersignup">signup</button>
+
+                <!--status display when needed-->
 
                 <p v-if="status !== undefined">{{ status }}</p>
             </div>
@@ -35,6 +39,7 @@ import axios from 'axios';
 
         methods:{
 
+            //on click function
             usersignup(){
 
 
@@ -45,6 +50,8 @@ import axios from 'axios';
 
                     data:{
 
+                        //sending data from user input
+
                         username: this.$refs['user'].value,
                         email: this.$refs['email'].value,
                         password: this.$refs['pass'].value,
@@ -54,8 +61,10 @@ import axios from 'axios';
                     }
                 }).then(response => {
 
+                    //on success, pushes to the login page
+
                     this.status = 'success!';
-                    console.log(response);
+                    response
                     this.$router.push(`/login`);
 
                 }).catch(error => {

@@ -1,5 +1,8 @@
 <template>
+    <!--checking if prof_data is defined, protects HTML-->
     <div v-if="prof_data !==undefined">
+
+        <!--displaying data gathered from the DB though api interaction-->
 
         <h2>Welcome, {{ prof_data['username'] }}</h2>
 
@@ -27,6 +30,7 @@ import axios from 'axios';
 
         methods:{
 
+            //on mount function
             on_mount(){
 
                 axios({
@@ -40,12 +44,14 @@ import axios from 'axios';
                     }
                 }).then(res =>{
 
+                    //gets data and stores it inside a variable on api success
                     this.prof_data = res['data'][0];
-                    console.log(res);
+                    res;
 
 
                 }).catch(err =>{
 
+                    //error message on failure
                     this.status = 'something went wrong, try again.';
                     err;
                 })
@@ -55,9 +61,9 @@ import axios from 'axios';
 
         mounted(){
 
+            //storing login cookie inside variable before calling the axios request
+
             this.token_var = Cookies.get('login_token');
-
-
             this.on_mount();
 
           
@@ -66,5 +72,9 @@ import axios from 'axios';
 </script>
 
 <style lang="scss" scoped>
+
+img{
+    width: 30%;
+}
 
 </style>
