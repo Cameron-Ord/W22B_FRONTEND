@@ -35,7 +35,7 @@ import axios from 'axios';
 
                 axios({
 
-                    url: 'http://127.0.0.1:5000/api/client',
+                    url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
                     method: 'GET',
 
                     params:{

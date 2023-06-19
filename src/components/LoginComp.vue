@@ -30,7 +30,7 @@ import Cookies from 'vue-cookies';
             login_form(){
 
                 axios({
-                    url:'http://127.0.0.1:5000/api/login',
+                    url:`${process.env.VUE_APP_BASE_DOMAIN}/api/login`,
                     method: 'POST',
 
                     data:{
